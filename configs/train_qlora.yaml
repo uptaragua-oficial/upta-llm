@@ -1,0 +1,58 @@
+training:
+  method: sft
+  framework: trl
+
+  output_dir: outputs/qwen3-8b-upta
+
+  seed: 42
+
+  num_train_epochs: 3
+
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 4
+
+  gradient_accumulation_steps: 4
+
+  learning_rate: 2.0e-4
+
+  weight_decay: 0.01
+
+  max_seq_length: 2048
+
+  logging_steps: 10
+
+  save_strategy: steps
+  save_steps: 250
+  save_total_limit: 2
+
+  evaluation_strategy: steps
+  eval_steps: 250
+
+  gradient_checkpointing: true
+
+  bf16: true
+  fp16: false
+
+  optim: paged_adamw_8bit
+
+  warmup_ratio: 0.03
+
+  lr_scheduler_type: cosine
+
+  report_to: none
+
+  packing: false
+
+  dataset_text_field: null
+
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.05
+
+quantization:
+  load_in_4bit: true
+  quant_type: nf4
+  compute_dtype: bfloat16
+  use_double_quant: true

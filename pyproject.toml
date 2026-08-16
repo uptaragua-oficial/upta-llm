@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "upta-llm"
+version = "0.1.0"
+description = "Fine-tuning Qwen3-8B with QLoRA for UPT Aragua"
+requires-python = ">=3.12,<3.13"
+
+dependencies = [
+    "accelerate",
+    "bitsandbytes",
+    "datasets",
+    "peft",
+    "pyyaml",
+    "safetensors",
+    "torch",
+    "transformers",
+    "trl",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]

@@ -1,0 +1,25 @@
+dataset:
+  name: UPTA-LLM
+  version: "1.0"
+
+  train_file: data/final/train.jsonl
+  validation_file: data/final/validation.jsonl
+
+  format: chatml
+
+  train_examples: 2545
+  validation_examples: 276
+  total_examples: 2821
+
+  corpus_file: data/corpus/fragmentos_semanticos.jsonl
+
+  split:
+    method: GroupShuffleSplit
+    group_by: fragmento_id
+    test_size: 0.10
+    random_state: 42
+
+  validation:
+    json_errors: 0
+    train_validation_example_overlap: 0
+    train_validation_question_overlap: 0

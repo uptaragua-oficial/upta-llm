@@ -1,0 +1,36 @@
+model:
+  name: Qwen/Qwen3-8B
+
+  architecture: causal_lm
+
+  quantization:
+    enabled: true
+    method: bitsandbytes
+    load_in_4bit: true
+
+    quant_type: nf4
+    compute_dtype: bfloat16
+    use_double_quant: true
+
+  tokenizer:
+    use_fast: true
+
+  trust_remote_code: true
+
+  lora:
+    enabled: true
+
+    rank: 16
+    alpha: 32
+    dropout: 0.05
+
+    bias: none
+
+    target_modules:
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
